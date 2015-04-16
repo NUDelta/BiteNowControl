@@ -27,6 +27,8 @@
 		E5BD1A911ADF494A004CAFDE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5BD1A901ADF494A004CAFDE /* SystemConfiguration.framework */; };
 		E5BD1A931ADF4966004CAFDE /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E5BD1A921ADF4966004CAFDE /* libz.dylib */; };
 		E5BD1A951ADF496D004CAFDE /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E5BD1A941ADF496D004CAFDE /* libsqlite3.dylib */; };
+		E5BD1A9B1ADF5678004CAFDE /* BFFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BD1A9A1ADF5678004CAFDE /* BFFeedViewController.m */; };
+		E5BD1A9E1ADF5A49004CAFDE /* BFContributeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BD1A9D1ADF5A49004CAFDE /* BFContributeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,10 @@
 		E5BD1A901ADF494A004CAFDE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E5BD1A921ADF4966004CAFDE /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		E5BD1A941ADF496D004CAFDE /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		E5BD1A991ADF5678004CAFDE /* BFFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BFFeedViewController.h; path = ../BFFeedViewController.h; sourceTree = "<group>"; };
+		E5BD1A9A1ADF5678004CAFDE /* BFFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BFFeedViewController.m; path = ../BFFeedViewController.m; sourceTree = "<group>"; };
+		E5BD1A9C1ADF5A49004CAFDE /* BFContributeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFContributeViewController.h; sourceTree = "<group>"; };
+		E5BD1A9D1ADF5A49004CAFDE /* BFContributeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFContributeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +143,10 @@
 				E5BD1A5B1ADF3C67004CAFDE /* AppDelegate.m */,
 				E5BD1A5D1ADF3C67004CAFDE /* ViewController.h */,
 				E5BD1A5E1ADF3C67004CAFDE /* ViewController.m */,
+				E5BD1A991ADF5678004CAFDE /* BFFeedViewController.h */,
+				E5BD1A9A1ADF5678004CAFDE /* BFFeedViewController.m */,
+				E5BD1A9C1ADF5A49004CAFDE /* BFContributeViewController.h */,
+				E5BD1A9D1ADF5A49004CAFDE /* BFContributeViewController.m */,
 				E5BD1A601ADF3C67004CAFDE /* Main.storyboard */,
 				E5BD1A631ADF3C67004CAFDE /* Images.xcassets */,
 				E5BD1A651ADF3C67004CAFDE /* LaunchScreen.xib */,
@@ -271,6 +281,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5BD1A9E1ADF5A49004CAFDE /* BFContributeViewController.m in Sources */,
+				E5BD1A9B1ADF5678004CAFDE /* BFFeedViewController.m in Sources */,
 				E5BD1A5F1ADF3C67004CAFDE /* ViewController.m in Sources */,
 				E5BD1A5C1ADF3C67004CAFDE /* AppDelegate.m in Sources */,
 				E5BD1A591ADF3C67004CAFDE /* main.m in Sources */,

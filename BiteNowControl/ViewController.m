@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "BFFeedViewController.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
@@ -17,7 +18,6 @@
 @implementation ViewController
 
 - (void)viewDidLoad {
-    
     
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
@@ -35,12 +35,12 @@
                 if ([objects count] == 0) {
                     PFUser *user = [PFUser user];
                     user.username = self.emailField.text;
-                    user.password = @"";
+                    user.password = @"password";
                     user[@"name"] = self.nameField.text;
                     [user signUpInBackground];
                 }
                 else {
-                    [PFUser logInWithUsername:self.emailField.text password:@""];
+                    [PFUser logInWithUsernameInBackground:self.emailField.text password:@"password"];
                 }
             }
         }];

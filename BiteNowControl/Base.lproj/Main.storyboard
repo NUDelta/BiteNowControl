@@ -90,7 +90,24 @@
                     <view key="view" contentMode="scaleToFill" id="7Fd-yw-xB9">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="bitenow" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eq8-DR-iRP">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
+                                <color key="backgroundColor" red="1" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="600" id="ESq-rc-Py8"/>
+                                    <constraint firstAttribute="height" constant="64" id="mrH-Sm-2oj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="36"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="Eq8-DR-iRP" secondAttribute="centerX" id="Mxp-13-8F9"/>
+                            <constraint firstItem="Eq8-DR-iRP" firstAttribute="top" secondItem="7Fd-yw-xB9" secondAttribute="top" id="TcK-vr-vQs"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="shopping57" id="VGj-j4-Alm"/>
                 </viewController>
@@ -101,7 +118,7 @@
         <!--Contribute-->
         <scene sceneID="kHG-4n-bdt">
             <objects>
-                <viewController id="5rT-vR-fhG" sceneMemberID="viewController">
+                <viewController id="5rT-vR-fhG" customClass="BFContributeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9rX-5u-9IT"/>
                         <viewControllerLayoutGuide type="bottom" id="sUJ-D3-lxN"/>
@@ -110,12 +127,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="bitenow" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXR-tx-WaO">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="bitenow" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXR-tx-WaO">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
                                 <color key="backgroundColor" red="1" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="hwt-tC-pA5"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="64" id="iLs-Zb-coa"/>
+                                    <constraint firstAttribute="height" constant="64" id="bCF-ll-Mbz"/>
+                                    <constraint firstAttribute="width" constant="600" id="o2z-qR-vyG"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="36"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -123,6 +140,10 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="fXR-tx-WaO" secondAttribute="centerX" id="bmN-26-hEu"/>
+                            <constraint firstItem="fXR-tx-WaO" firstAttribute="top" secondItem="uiF-Km-Ldr" secondAttribute="top" id="tFZ-WE-Idu"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Contribute" image="arrow424-1" id="kcP-nL-3SM"/>
                 </viewController>
@@ -133,7 +154,7 @@
         <!--Feed-->
         <scene sceneID="Gni-gL-ERX">
             <objects>
-                <viewController id="tPd-5d-wb3" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="feedView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tPd-5d-wb3" customClass="BFFeedViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Eaj-ym-R1g"/>
                         <viewControllerLayoutGuide type="bottom" id="Zf4-4d-fX2"/>
@@ -141,7 +162,24 @@
                     <view key="view" contentMode="scaleToFill" id="6Si-VP-B0L">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="bitenow" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5wm-pE-zsy">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
+                                <color key="backgroundColor" red="1" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="nd3-aG-79o"/>
+                                    <constraint firstAttribute="width" constant="600" id="wD1-xL-tr5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="36"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="5wm-pE-zsy" firstAttribute="top" secondItem="6Si-VP-B0L" secondAttribute="top" id="5vn-20-JkX"/>
+                            <constraint firstAttribute="centerX" secondItem="5wm-pE-zsy" secondAttribute="centerX" id="QWp-2r-Q10"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Feed" image="shopping57" id="aC1-4X-M7R"/>
                 </viewController>
@@ -152,7 +190,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="GGN-Sz-fch">
             <objects>
-                <tabBarController id="d9T-Co-pmG" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="homeView" id="d9T-Co-pmG" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="y52-dF-p82">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>

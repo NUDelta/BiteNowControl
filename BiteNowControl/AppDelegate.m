@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "BFFeedViewController.h"
 #import <Parse/Parse.h>
 
 @interface AppDelegate ()
@@ -19,13 +20,30 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [Parse enableLocalDatastore];
-    
+    [PFUser enableRevocableSessionInBackground];
     [Parse setApplicationId:@"YLdVnEbVE2KUq5AeLJnI1U9pDSaihGMyhn7rZNPG"
                   clientKey:@"KTimbSuvZuHwCq3XXelLocnnlE4YXz9KRGz79FoZ"];
     
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    NSLog(@"%@", [PFUser currentUser]);
+    if ([PFUser currentUser] && [[PFUser currentUser] isAuthenticated]) {
+        NSLog(@"%@", [PFUser currentUser]);
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        BFFeedViewController *ivc = [storyboard instantiateViewControllerWithIdentifier:@"feedView"];
+        self.window.rootViewController = ivc;
+    }
     return YES;
 }
+
+//- (void)presentFeedViewController {
+//    // Go to the welcome screen and have them log in or create an account.
+//    BFFeedViewController *viewController =
+//    [[BFFeedViewController alloc] initWithNibName:nil
+//                                             bundle:nil];
+//    viewController.delegate = self;
+//    [self.navigationController setViewControllers:@[ viewController ]
+//                                         animated:NO];
+//}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
