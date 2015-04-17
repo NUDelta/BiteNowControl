@@ -7,7 +7,17 @@
 //
 
 #import "ViewController.h"
+#import <CoreLocation/CoreLocation.h>
+#import <Parse/Parse.h>
 
-@interface BFContributeViewController : ViewController
+@interface BFContributeViewController : ViewController<CLLocationManagerDelegate> {
+    CLLocationManager *locationManager;
+    CLLocation *currentLocation;
+}
+@property (weak, nonatomic) IBOutlet UISegmentedControl *reportBuilding;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *buildingFloor;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *foodType;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *drinkType;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *foodRequirement;
 
 @end

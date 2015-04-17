@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ViewController.h"
 #import "BFFeedViewController.h"
 #import <Parse/Parse.h>
 
@@ -18,15 +19,29 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    [self beginLocationTracking];
+//    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)] ) {
+//        // iOS 8 case
+//        [self registerUserNotificationCategoriesForApplication:application];
+//    } else {
+//        // iOS 7 case
+//        [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
+//    }
     [Parse enableLocalDatastore];
     [PFUser enableRevocableSessionInBackground];
     [Parse setApplicationId:@"YLdVnEbVE2KUq5AeLJnI1U9pDSaihGMyhn7rZNPG"
                   clientKey:@"KTimbSuvZuHwCq3XXelLocnnlE4YXz9KRGz79FoZ"];
-    
+//    [PFUser enableAutomaticUser];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+//    if([PFUser currentUser]) {
+//        self.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
+//    } else {
+//        UIViewController* rootController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"SignInViewController"];
+//        UINavigationController* navigation = [[UINavigationController alloc] initWithRootViewController:rootController];
+//        self.window.rootViewController = navigation;
+//    }
     NSLog(@"%@", [PFUser currentUser]);
-    if ([PFUser currentUser] && [[PFUser currentUser] isAuthenticated]) {
+    if ([PFUser currentUser]) {
         NSLog(@"%@", [PFUser currentUser]);
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         BFFeedViewController *ivc = [storyboard instantiateViewControllerWithIdentifier:@"feedView"];
@@ -35,15 +50,36 @@
     return YES;
 }
 
-//- (void)presentFeedViewController {
-//    // Go to the welcome screen and have them log in or create an account.
-//    BFFeedViewController *viewController =
-//    [[BFFeedViewController alloc] initWithNibName:nil
-//                                             bundle:nil];
-//    viewController.delegate = self;
-//    [self.navigationController setViewControllers:@[ viewController ]
-//                                         animated:NO];
+//-(void)registerUserNotificationCategoriesForApplication:(UIApplication *)application
+//{
+//    [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:actionSet]];
 //}
+
+-(void)beginLocationTracking
+{
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
+        [self.locationManager requestAlwaysAuthorization];
+    }
+    [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{}];
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+    [self.locationManager startUpdatingLocation];
+}
+
+-(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
+{
+    if (status == kCLAuthorizationStatusAuthorizedAlways) {
+        [self.locationManager startUpdatingLocation];
+    }
+}
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    CLLocation *location = [locations lastObject];
+    // NSLog(@"%@", location);
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

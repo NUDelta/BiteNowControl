@@ -7,6 +7,8 @@
 //
 
 #import "BFContributeViewController.h"
+#import "AppDelegate.h"
+#import <Parse/Parse.h>
 
 @interface BFContributeViewController ()
 
@@ -14,9 +16,61 @@
 
 @implementation BFContributeViewController
 
+@synthesize reportBuilding;
+@synthesize buildingFloor;
+@synthesize foodType;
+@synthesize drinkType;
+@synthesize foodRequirement;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self CurrentLocationIdentifier];
     // Do any additional setup after loading the view.
+}
+
+- (IBAction)saveReport:(id)sender {
+    CLLocation *location = currentLocation;
+    CLLocationCoordinate2D coordinate = [location coordinate];
+    PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:coordinate.latitude
+                                                  longitude:coordinate.longitude];
+    PFObject *foodReport = [PFObject objectWithClassName:@"Report"];
+    PFUser *user = [PFUser currentUser];
+    foodReport[@"Building"] = [reportBuilding titleForSegmentAtIndex:reportBuilding.selectedSegmentIndex];
+    foodReport[@"Floor"] = [buildingFloor titleForSegmentAtIndex:buildingFloor.selectedSegmentIndex];
+    foodReport[@"FoodType"] = [foodType titleForSegmentAtIndex:foodType.selectedSegmentIndex];
+    foodReport[@"DrinkType"] = [drinkType titleForSegmentAtIndex:drinkType.selectedSegmentIndex];
+    foodReport[@"Requirement"] = [foodRequirement titleForSegmentAtIndex:foodRequirement.selectedSegmentIndex];
+    foodReport[@"FoodGeopoint"] = geoPoint;
+    foodReport[@"User"] = user;
+    [foodReport saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            NSLog(@"saved");
+            UIAlertView *confirmation = [[UIAlertView alloc] initWithTitle:@"Saved food report" message:@"Thanks for submitting a report!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [confirmation show];
+        } else {
+            // There was a problem, check error.description
+            NSLog(@"error");
+        }
+    }];
+}
+
+-(void)CurrentLocationIdentifier {
+    locationManager = [CLLocationManager new];
+    locationManager.delegate = self;
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [locationManager startUpdatingLocation];
+}
+
+-(void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    currentLocation = [locations lastObject];
+    NSLog(@"%@", currentLocation);
+}
+
+-(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+    if (status == kCLAuthorizationStatusAuthorizedAlways) {
+        [locationManager startUpdatingLocation];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
