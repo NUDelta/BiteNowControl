@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import <MapKit/MapKit.h>
 
-@interface ReportDetailViewController : ViewController
+@interface ReportDetailViewController : ViewController <MKMapViewDelegate>
 @property NSInteger tableIndex;
 
 @end

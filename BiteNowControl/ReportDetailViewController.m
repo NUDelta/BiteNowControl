@@ -10,14 +10,82 @@
 #import "AppDelegate.h"
 
 @interface ReportDetailViewController ()
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *backBarButtonItem;
+@property (weak, nonatomic) IBOutlet UINavigationBar *backNavigationBar;
+@property (weak, nonatomic) IBOutlet MKMapView *reportMapView;
+@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *foodTypeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *reportTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *notFreeForAllLabel;
 
 @end
 
-@implementation ReportDetailViewController
+@implementation ReportDetailViewController {
+    NSArray *foodReports;
+}
+
+- (IBAction)backButtonPressed:(id)sender {
+//    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.reportMapView.delegate = self;
+    PFQuery *query = [PFQuery queryWithClassName:@"Report"];
+    [query setLimit:1000];
+    [query orderByDescending:@"createdAt"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            foodReports = [[NSArray alloc]initWithArray:objects];
+            NSLog(@"Success %lu", (unsigned long)foodReports.count);
+            // NSLog(@"%@", objects);
+            //            for (PFObject *object in self.foodReports) {
+            //                NSLog(@"%@", object.createdAt);
+            //            }
+            if (self.tableIndex >= 0) {
+                [self addDetails];
+            }
+        } else {
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+    
+}
+
+-(void)addDetails
+{
+    PFObject *report = [foodReports objectAtIndex:self.tableIndex];
+    NSLog(@"%@", foodReports);
+    NSLog(@"%ld", (long)self.tableIndex);
+    NSLog(@"REPORT %@", report);
+    PFGeoPoint *geoPoint = [report objectForKey:@"FoodGeopoint"];
+    NSString *building = [report objectForKey:@"Building"];
+    NSString *floor = [report objectForKey:@"Floor"];
+    NSString *foodType = [report objectForKey:@"FoodType"];
+    NSString *drinkType = [report objectForKey:@"DrinkType"];
+    
+    self.locationLabel.text = [NSString stringWithFormat:@"Floor %@ of %@", floor, building];
+    if (![foodType isEqualToString:@"None"] && [drinkType isEqualToString:@"None"]) {
+        self.foodTypeLabel.text = [NSString stringWithFormat:@"%@", foodType];
+    } else if ([foodType isEqualToString:@"None"] && ![drinkType isEqualToString:@"None"]) {
+        self.foodTypeLabel.text = [NSString stringWithFormat:@"%@", drinkType];
+    } else {
+        self.foodTypeLabel.text = [NSString stringWithFormat:@"%@ and %@", foodType, drinkType];
+    }
+    
+    CLLocation *reportLocation = [[CLLocation alloc] initWithLatitude:geoPoint.latitude longitude:geoPoint.longitude];
+    self.distanceLabel.text = [NSString stringWithFormat:@"%f meters away from you", [reportLocation distanceFromLocation:((AppDelegate*)[UIApplication sharedApplication].delegate).locationManager.location]];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"HH:mm"];
+    self.reportTimeLabel.text = [NSString stringWithFormat:@"reported at %@", [formatter stringFromDate:report.updatedAt]];
+    // WARNING: this should really be uncommented. However, the logic for determining whether the
+    // food is free for everyone seems to be a bit screwed up. For the sake of our study, we will
+    // leave this commented out.
+    //if ([report.freeForAnyone isEqualToString:@"yes"]) {
+    self.notFreeForAllLabel.hidden = YES;
+    //}
 }
 
 - (void)didReceiveMemoryWarning {

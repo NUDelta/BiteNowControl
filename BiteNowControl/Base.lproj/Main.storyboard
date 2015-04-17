@@ -379,19 +379,93 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6UX-2w-Gwk">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6UX-2w-Gwk">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <items>
-                                    <navigationItem title="Title" id="vWw-JZ-TqG"/>
+                                    <navigationItem id="vWw-JZ-TqG">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="mwy-2d-TmA">
+                                            <connections>
+                                                <action selector="backButtonPressed:" destination="Qfi-Gl-N6f" id="e1j-fO-NfZ"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="p6K-No-mmI">
+                                <rect key="frame" x="0.0" y="108" width="600" height="328"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="345" id="By7-G2-Bo7"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="By7-G2-Bo7"/>
+                                    </mask>
+                                </variation>
+                            </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Building and floor" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fyY-tC-yHb">
+                                <rect key="frame" x="16" y="450" width="135" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type of food" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3w-v3-T4J">
+                                <rect key="frame" x="16" y="479" width="96" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance from you" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zK5-sY-kZX">
+                                <rect key="frame" x="16" y="508" width="140" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="last time reported" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KZw-XX-m4S">
+                                <rect key="frame" x="449" y="453" width="135" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="*may not be free for all eaters" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q8G-rL-AZy">
+                                <rect key="frame" x="394" y="482" width="190" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="zK5-sY-kZX" firstAttribute="leading" secondItem="sc2-Ew-KuW" secondAttribute="leadingMargin" id="3zM-zD-08k"/>
+                            <constraint firstItem="d3w-v3-T4J" firstAttribute="leading" secondItem="sc2-Ew-KuW" secondAttribute="leadingMargin" id="497-pE-cze"/>
+                            <constraint firstItem="zK5-sY-kZX" firstAttribute="top" secondItem="d3w-v3-T4J" secondAttribute="bottom" constant="8" id="4YA-Pi-XtK"/>
+                            <constraint firstItem="d3w-v3-T4J" firstAttribute="top" secondItem="fyY-tC-yHb" secondAttribute="bottom" constant="8" id="5UP-Ud-GOr"/>
+                            <constraint firstItem="KZw-XX-m4S" firstAttribute="trailing" secondItem="sc2-Ew-KuW" secondAttribute="trailingMargin" id="8hS-8J-VEO"/>
+                            <constraint firstItem="p6K-No-mmI" firstAttribute="leading" secondItem="sc2-Ew-KuW" secondAttribute="leadingMargin" constant="-16" id="99r-fE-O5X"/>
+                            <constraint firstItem="q8G-rL-AZy" firstAttribute="trailing" secondItem="sc2-Ew-KuW" secondAttribute="trailingMargin" id="C6g-jU-zJr"/>
                             <constraint firstItem="xQ7-vU-S4R" firstAttribute="top" secondItem="sc2-Ew-KuW" secondAttribute="top" id="IwX-xf-0ZF"/>
+                            <constraint firstItem="p6K-No-mmI" firstAttribute="leading" secondItem="6UX-2w-Gwk" secondAttribute="leading" id="LBs-P1-AwP"/>
+                            <constraint firstItem="fyY-tC-yHb" firstAttribute="top" secondItem="p6K-No-mmI" secondAttribute="bottom" constant="14" id="T21-3I-evv"/>
+                            <constraint firstItem="yEH-SX-sNs" firstAttribute="top" secondItem="p6K-No-mmI" secondAttribute="bottom" constant="115" id="aaR-1p-b7h"/>
+                            <constraint firstItem="p6K-No-mmI" firstAttribute="top" secondItem="sc2-Ew-KuW" secondAttribute="top" constant="108" id="bFG-OI-gy8"/>
+                            <constraint firstItem="p6K-No-mmI" firstAttribute="trailing" secondItem="6UX-2w-Gwk" secondAttribute="trailing" id="kuc-sK-ljr"/>
+                            <constraint firstItem="fyY-tC-yHb" firstAttribute="leading" secondItem="sc2-Ew-KuW" secondAttribute="leadingMargin" id="oLX-uV-SxW"/>
+                            <constraint firstItem="p6K-No-mmI" firstAttribute="top" secondItem="6UX-2w-Gwk" secondAttribute="bottom" id="oqd-Gu-SM9"/>
                             <constraint firstAttribute="centerX" secondItem="xQ7-vU-S4R" secondAttribute="centerX" id="rvQ-5l-Gx8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="p6K-No-mmI" secondAttribute="trailing" constant="-16" id="t5d-Fa-X42"/>
+                            <constraint firstItem="q8G-rL-AZy" firstAttribute="top" secondItem="p6K-No-mmI" secondAttribute="bottom" constant="46" id="ulE-94-dtq"/>
+                            <constraint firstItem="KZw-XX-m4S" firstAttribute="top" secondItem="p6K-No-mmI" secondAttribute="bottom" constant="17" id="yUJ-K0-kKU"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="backBarButtonItem" destination="mwy-2d-TmA" id="qs6-bY-VWs"/>
+                        <outlet property="backNavigationBar" destination="6UX-2w-Gwk" id="7J6-pb-XwH"/>
+                        <outlet property="distanceLabel" destination="zK5-sY-kZX" id="o5x-wB-SqI"/>
+                        <outlet property="foodTypeLabel" destination="d3w-v3-T4J" id="xMb-Ka-uPC"/>
+                        <outlet property="locationLabel" destination="fyY-tC-yHb" id="KaV-3N-lex"/>
+                        <outlet property="notFreeForAllLabel" destination="q8G-rL-AZy" id="NDS-e6-L4v"/>
+                        <outlet property="reportMapView" destination="p6K-No-mmI" id="PbZ-qF-c2P"/>
+                        <outlet property="reportTimeLabel" destination="KZw-XX-m4S" id="pJW-LC-jjN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qo5-Z1-fVx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

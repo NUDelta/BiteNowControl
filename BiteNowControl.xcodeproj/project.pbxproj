@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E57759261AE0A7A000C81DDA /* ReportDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E57759251AE0A7A000C81DDA /* ReportDetailViewController.m */; };
+		E58168C11AE1A2D6005C72B0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E58168C01AE1A2D5005C72B0 /* MapKit.framework */; };
 		E5BD1A591ADF3C67004CAFDE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BD1A581ADF3C67004CAFDE /* main.m */; };
 		E5BD1A5C1ADF3C67004CAFDE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BD1A5B1ADF3C67004CAFDE /* AppDelegate.m */; };
 		E5BD1A5F1ADF3C67004CAFDE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BD1A5E1ADF3C67004CAFDE /* ViewController.m */; };
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		E57759241AE0A7A000C81DDA /* ReportDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportDetailViewController.h; sourceTree = "<group>"; };
 		E57759251AE0A7A000C81DDA /* ReportDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportDetailViewController.m; sourceTree = "<group>"; };
+		E58168C01AE1A2D5005C72B0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E5BD1A531ADF3C67004CAFDE /* BiteNowControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BiteNowControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5BD1A571ADF3C67004CAFDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5BD1A581ADF3C67004CAFDE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E58168C11AE1A2D6005C72B0 /* MapKit.framework in Frameworks */,
 				E5BD1A951ADF496D004CAFDE /* libsqlite3.dylib in Frameworks */,
 				E5BD1A931ADF4966004CAFDE /* libz.dylib in Frameworks */,
 				E5BD1A911ADF494A004CAFDE /* SystemConfiguration.framework in Frameworks */,
@@ -111,6 +114,7 @@
 		E5BD1A4A1ADF3C67004CAFDE = {
 			isa = PBXGroup;
 			children = (
+				E58168C01AE1A2D5005C72B0 /* MapKit.framework */,
 				E5BD1A551ADF3C67004CAFDE /* BiteNowControl */,
 				E5BD1A6F1ADF3C67004CAFDE /* BiteNowControlTests */,
 				E5BD1A541ADF3C67004CAFDE /* Products */,
