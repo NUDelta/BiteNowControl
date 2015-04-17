@@ -12,7 +12,7 @@
 
 @interface BFFeedViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *feedTableView;
-
+@property (strong, nonatomic) NSArray *reportArray;
 @end
 
 @implementation BFFeedViewController {
@@ -22,15 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initUI];
-//   foodReports = [NSArray arrayWithObjects:@"Egg Benedict", @"Mushroom Risotto", @"Full Breakfast", @"Hamburger", @"Ham and Egg Sandwich", @"Creme Brelee", @"White Chocolate Donut", @"Starbucks Coffee", @"Vegetable Curry", @"Instant Noodle with Egg", @"Noodle with BBQ Pork", @"Japanese Noodle with Pork", @"Green Tea", @"Thai Shrimp Cake", @"Angry Birds Cake", @"Ham and Cheese Panini", nil];
-//    [self initTableView];
 }
-
-//- (void)initTableView {
-//    self.feedTableView.delegate = self;
-//    self.feedTableView.dataSource = self;
-//    
-//}
 
 - (void) initUI {
     // table view
@@ -42,7 +34,6 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             foodReports = [[NSArray alloc]initWithArray:objects];
-            // find succeeded, first 100 objects available in objects
             NSLog(@"Success %lu", (unsigned long)foodReports.count);
             //            for (PFObject *object in self.foodReports) {
             //                NSLog(@"%@", object.createdAt);
@@ -71,18 +62,22 @@
     }
     
     static NSString *CellIdentifier = @"Cell";
-    //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
-    //PFObject *tempObject = [self.foodReports objectAtIndex:indexPath.row];
-    //cell.textLabel.text = [tempObject objectForKey:@"event"];
-    PFObject *tempObject = [foodReports objectAtIndex:indexPath.row];
-    PFGeoPoint *geoPoint = [tempObject objectForKey:@"location"];
+    PFObject *report = [foodReports objectAtIndex:indexPath.row];
+    PFGeoPoint *geoPoint = [report objectForKey:@"FoodGeopoint"];
+    NSString *building = [report objectForKey:@"Building"];
+    NSString *floor = [report objectForKey:@"Floor"];
+    NSString *foodType = [report objectForKey:@"FoodType"];
+    NSString *drinkType = [report objectForKey:@"DrinkType"];
+    
+    CLLocation *reportLocation = [[CLLocation alloc] initWithLatitude:geoPoint.latitude longitude:geoPoint.longitude];
     double objectLat = geoPoint.latitude;
     
     [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *currentgeoPoint, NSError *error) {
@@ -92,7 +87,19 @@
             [numberFormatter setLocale:[NSLocale currentLocale]];
             [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
             [numberFormatter setMaximumFractionDigits:1];
-            cell.textLabel.text = [NSString stringWithFormat:@"Food spotted %@ miles away", [numberFormatter stringFromNumber:[NSNumber numberWithDouble:[currentgeoPoint distanceInMilesTo:geoPoint]]]];
+            
+            if (![foodType isEqualToString:@"None"] && [drinkType isEqualToString:@"None"]) {
+                // only food reported
+                cell.textLabel.text = [NSString stringWithFormat:@"%@ on floor %@ of %@", foodType, floor, building];
+            } else if ([foodType isEqualToString:@"None"] && ![drinkType isEqualToString:@"None"]) {
+                // only drink reported
+                cell.textLabel.text = [NSString stringWithFormat:@"%@ on floor %@ of %@", drinkType, floor, building];
+            } else {
+                // both food and drink reported
+                cell.textLabel.text = [NSString stringWithFormat:@"%@ and %@ on floor %@ of %@", foodType, drinkType, floor, building];
+            }
+//            cell.detailTextLabel.text = [NSString stringWithFormat:@"%.f meters away", [reportLocation distanceFromLocation:((AppDelegate *)[UIApplication sharedApplication].delegate).locationManager.location]];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ miles away", [numberFormatter stringFromNumber:[NSNumber numberWithDouble:[currentgeoPoint distanceInMilesTo:geoPoint]]]];
         }
         else {
             UIAlertView *errorAlert = [[UIAlertView alloc]initWithTitle:@"Oops!" message:[error description] delegate:self cancelButtonTitle:nil otherButtonTitles:@"Okay", nil];
@@ -101,37 +108,31 @@
     }];
     
     // time formatting
-    NSDate *localDate = [NSDate date];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"YYYY-MM-dd hh:mm";
-    // [dateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss Z"];
-    [dateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
-    NSLog(@"The Current Time is the following %@",[dateFormatter stringFromDate:localDate]);
-    
-    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:localDate];
-    NSTimeInterval secondsBetween = [tempObject.createdAt timeIntervalSinceDate:localDate];
-    int numberOfMinutes = (secondsBetween / 60) * -1;
-    int numberOfHours = (secondsBetween / 3600) * -1;
-    int numberOfDays = (secondsBetween / 86400) * -1;
-    
-    // conditional cell formatting
-    //cell.textLabel.text = [dateFormatter stringFromDate:tempObject.updatedAt];
-    if (numberOfMinutes > 60 && numberOfHours < 24) {
-        NSString *string = [NSString stringWithFormat:@"Reported %d hours ago", numberOfHours];
-        cell.detailTextLabel.text = string;
-    } else if (numberOfHours > 24) {
-        NSString *string = [NSString stringWithFormat:@"Reported %d days ago", numberOfDays];
-        cell.detailTextLabel.text = string;
-    } else {
-        NSString *string = [NSString stringWithFormat:@"Reported %d minutes ago", numberOfMinutes];
-        cell.detailTextLabel.text = string;
-    }
-    //    NSString *string = [NSString stringWithFormat:@"Food was reported %d days ago, %d hours, %d minutes ago.", numberOfDays, numberOfHours, numberOfMinutes];
-    //    NSString *string = [NSString stringWithFormat:@"%@, %@",
-    //                        [numberFormatter stringFromNumber:[NSNumber numberWithDouble:geoPoint.latitude]],
-    //                        [numberFormatter stringFromNumber:[NSNumber numberWithDouble:geoPoint.longitude]]];
-    
-    //cell.textLabel.text = [self.foodReports objectAtIndex:indexPath.row];
+//    NSDate *localDate = [NSDate date];
+//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//    dateFormatter.dateFormat = @"YYYY-MM-dd hh:mm";
+//    // [dateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss Z"];
+//    [dateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
+//    NSLog(@"The Current Time is the following %@",[dateFormatter stringFromDate:localDate]);
+//    
+//    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:localDate];
+//    NSTimeInterval secondsBetween = [tempObject.createdAt timeIntervalSinceDate:localDate];
+//    int numberOfMinutes = (secondsBetween / 60) * -1;
+//    int numberOfHours = (secondsBetween / 3600) * -1;
+//    int numberOfDays = (secondsBetween / 86400) * -1;
+//    
+//    // conditional cell formatting
+//    //cell.textLabel.text = [dateFormatter stringFromDate:tempObject.updatedAt];
+//    if (numberOfMinutes > 60 && numberOfHours < 24) {
+//        NSString *string = [NSString stringWithFormat:@"Reported %d hours ago", numberOfHours];
+//        cell.detailTextLabel.text = string;
+//    } else if (numberOfHours > 24) {
+//        NSString *string = [NSString stringWithFormat:@"Reported %d days ago", numberOfDays];
+//        cell.detailTextLabel.text = string;
+//    } else {
+//        NSString *string = [NSString stringWithFormat:@"Reported %d minutes ago", numberOfMinutes];
+//        cell.detailTextLabel.text = string;
+//    }
     return cell;
 }
 
