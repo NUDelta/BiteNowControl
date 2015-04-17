@@ -305,18 +305,83 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="cVT-VS-Nr8">
+                                <rect key="frame" x="0.0" y="66" width="600" height="485"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="lep-R2-UAf">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lep-R2-UAf" id="Gav-it-AZw">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Qfi-Gl-N6f" kind="show" identifier="reportDetail" id="b78-CW-m97"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="cVT-VS-Nr8" firstAttribute="top" secondItem="5wm-pE-zsy" secondAttribute="bottom" constant="2" id="28Q-xo-jLA"/>
                             <constraint firstItem="5wm-pE-zsy" firstAttribute="top" secondItem="6Si-VP-B0L" secondAttribute="top" id="5vn-20-JkX"/>
+                            <constraint firstItem="5wm-pE-zsy" firstAttribute="centerX" secondItem="cVT-VS-Nr8" secondAttribute="centerX" id="766-Ke-Hha"/>
+                            <constraint firstItem="cVT-VS-Nr8" firstAttribute="leading" secondItem="6Si-VP-B0L" secondAttribute="leadingMargin" constant="-16" id="Bvp-cR-tmk"/>
                             <constraint firstAttribute="centerX" secondItem="5wm-pE-zsy" secondAttribute="centerX" id="QWp-2r-Q10"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cVT-VS-Nr8" secondAttribute="trailing" constant="-16" id="rew-0d-3Cm"/>
+                            <constraint firstItem="Zf4-4d-fX2" firstAttribute="top" secondItem="cVT-VS-Nr8" secondAttribute="bottom" id="v0z-ld-LJj"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Feed" image="shopping57" id="aC1-4X-M7R"/>
+                    <connections>
+                        <outlet property="feedTableView" destination="cVT-VS-Nr8" id="ggi-Ae-Hfv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Anx-xU-nYZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="325" y="106"/>
+            <point key="canvasLocation" x="325" y="128"/>
+        </scene>
+        <!--Report Detail View Controller-->
+        <scene sceneID="mbG-cN-SQX">
+            <objects>
+                <viewController id="Qfi-Gl-N6f" customClass="ReportDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cql-G2-Xdy"/>
+                        <viewControllerLayoutGuide type="bottom" id="yEH-SX-sNs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sc2-Ew-KuW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="bitenow" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xQ7-vU-S4R">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
+                                <color key="backgroundColor" red="1" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="600" id="2xg-rg-8hd"/>
+                                    <constraint firstAttribute="height" constant="64" id="RmM-aB-t5N"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="36"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6UX-2w-Gwk">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="vWw-JZ-TqG"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xQ7-vU-S4R" firstAttribute="top" secondItem="sc2-Ew-KuW" secondAttribute="top" id="IwX-xf-0ZF"/>
+                            <constraint firstAttribute="centerX" secondItem="xQ7-vU-S4R" secondAttribute="centerX" id="rvQ-5l-Gx8"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qo5-Z1-fVx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1024" y="15"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="GGN-Sz-fch">

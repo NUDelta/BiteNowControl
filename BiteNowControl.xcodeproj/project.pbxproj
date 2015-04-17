@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E57759261AE0A7A000C81DDA /* ReportDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E57759251AE0A7A000C81DDA /* ReportDetailViewController.m */; };
 		E5BD1A591ADF3C67004CAFDE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BD1A581ADF3C67004CAFDE /* main.m */; };
 		E5BD1A5C1ADF3C67004CAFDE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BD1A5B1ADF3C67004CAFDE /* AppDelegate.m */; };
 		E5BD1A5F1ADF3C67004CAFDE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BD1A5E1ADF3C67004CAFDE /* ViewController.m */; };
@@ -42,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E57759241AE0A7A000C81DDA /* ReportDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportDetailViewController.h; sourceTree = "<group>"; };
+		E57759251AE0A7A000C81DDA /* ReportDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportDetailViewController.m; sourceTree = "<group>"; };
 		E5BD1A531ADF3C67004CAFDE /* BiteNowControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BiteNowControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5BD1A571ADF3C67004CAFDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5BD1A581ADF3C67004CAFDE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -148,6 +151,8 @@
 				E5BD1A9C1ADF5A49004CAFDE /* BFContributeViewController.h */,
 				E5BD1A9D1ADF5A49004CAFDE /* BFContributeViewController.m */,
 				E5BD1A601ADF3C67004CAFDE /* Main.storyboard */,
+				E57759241AE0A7A000C81DDA /* ReportDetailViewController.h */,
+				E57759251AE0A7A000C81DDA /* ReportDetailViewController.m */,
 				E5BD1A631ADF3C67004CAFDE /* Images.xcassets */,
 				E5BD1A651ADF3C67004CAFDE /* LaunchScreen.xib */,
 				E5BD1A561ADF3C67004CAFDE /* Supporting Files */,
@@ -286,6 +291,7 @@
 				E5BD1A5F1ADF3C67004CAFDE /* ViewController.m in Sources */,
 				E5BD1A5C1ADF3C67004CAFDE /* AppDelegate.m in Sources */,
 				E5BD1A591ADF3C67004CAFDE /* main.m in Sources */,
+				E57759261AE0A7A000C81DDA /* ReportDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +490,7 @@
 				E5BD1A781ADF3C67004CAFDE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E5BD1A791ADF3C67004CAFDE /* Build configuration list for PBXNativeTarget "BiteNowControlTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +499,7 @@
 				E5BD1A7B1ADF3C67004CAFDE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

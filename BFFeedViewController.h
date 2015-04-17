@@ -8,6 +8,6 @@
 
 #import "ViewController.h"
 
-@interface BFFeedViewController : ViewController
+@interface BFFeedViewController : ViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end
