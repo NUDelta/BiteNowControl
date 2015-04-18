@@ -30,9 +30,13 @@
 
 - (void) initUI {
     // table view
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTableView) name:@"reportUpdate" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fetchReports) name:@"reportUpdate" object:nil];
     self.feedTableView.delegate = self;
     self.feedTableView.dataSource = self;
+    [self fetchReports];
+}
+
+- (void) fetchReports {
     PFQuery *query = [PFQuery queryWithClassName:@"Report"];
     [query setLimit:1000];
     [query orderByDescending:@"createdAt"];
@@ -40,9 +44,6 @@
         if (!error) {
             foodReports = [[NSArray alloc]initWithArray:objects];
             NSLog(@"Success %lu", (unsigned long)foodReports.count);
-            //            for (PFObject *object in self.foodReports) {
-            //                NSLog(@"%@", object.createdAt);
-            //            }
         } else {
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
@@ -111,33 +112,6 @@
             [errorAlert show];
         }
     }];
-    
-    // time formatting
-//    NSDate *localDate = [NSDate date];
-//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-//    dateFormatter.dateFormat = @"YYYY-MM-dd hh:mm";
-//    // [dateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss Z"];
-//    [dateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
-//    NSLog(@"The Current Time is the following %@",[dateFormatter stringFromDate:localDate]);
-//    
-//    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:localDate];
-//    NSTimeInterval secondsBetween = [tempObject.createdAt timeIntervalSinceDate:localDate];
-//    int numberOfMinutes = (secondsBetween / 60) * -1;
-//    int numberOfHours = (secondsBetween / 3600) * -1;
-//    int numberOfDays = (secondsBetween / 86400) * -1;
-//    
-//    // conditional cell formatting
-//    //cell.textLabel.text = [dateFormatter stringFromDate:tempObject.updatedAt];
-//    if (numberOfMinutes > 60 && numberOfHours < 24) {
-//        NSString *string = [NSString stringWithFormat:@"Reported %d hours ago", numberOfHours];
-//        cell.detailTextLabel.text = string;
-//    } else if (numberOfHours > 24) {
-//        NSString *string = [NSString stringWithFormat:@"Reported %d days ago", numberOfDays];
-//        cell.detailTextLabel.text = string;
-//    } else {
-//        NSString *string = [NSString stringWithFormat:@"Reported %d minutes ago", numberOfMinutes];
-//        cell.detailTextLabel.text = string;
-//    }
     return cell;
 }
 

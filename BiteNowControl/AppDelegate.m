@@ -40,6 +40,9 @@
 //        UINavigationController* navigation = [[UINavigationController alloc] initWithRootViewController:rootController];
 //        self.window.rootViewController = navigation;
 //    }
+    
+//    NSTimer* timer = [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(refreshTable) userInfo:nil repeats:YES];
+    
     NSLog(@"%@", [PFUser currentUser]);
     if ([PFUser currentUser]) {
         NSLog(@"%@", [PFUser currentUser]);
@@ -54,13 +57,8 @@
 
 -(void)registerUserNotificationCategoriesForApplication:(UIApplication *)application
 {
-//    [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:actionSet]];
+    [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
 }
-
-//-(void)registerUserNotificationCategoriesForApplication:(UIApplication *)application
-//{
-//    [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:actionSet]];
-//}
 
 -(void)beginLocationTracking
 {
