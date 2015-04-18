@@ -20,13 +20,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self beginLocationTracking];
-//    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)] ) {
-//        // iOS 8 case
-//        [self registerUserNotificationCategoriesForApplication:application];
-//    } else {
-//        // iOS 7 case
-//        [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
-//    }
+    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)] ) {
+        // iOS 8 case
+        [self registerUserNotificationCategoriesForApplication:application];
+    } else {
+        // iOS 7 case
+        [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
+    }
     [Parse enableLocalDatastore];
     [PFUser enableRevocableSessionInBackground];
     [Parse setApplicationId:@"YLdVnEbVE2KUq5AeLJnI1U9pDSaihGMyhn7rZNPG"
@@ -47,7 +47,14 @@
         BFFeedViewController *ivc = [storyboard instantiateViewControllerWithIdentifier:@"feedView"];
         self.window.rootViewController = ivc;
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayFoodNotification:) name:@"reportUpdate" object:nil];
     return YES;
+}
+
+-(void)registerUserNotificationCategoriesForApplication:(UIApplication *)application
+{
+//    [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:actionSet]];
 }
 
 //-(void)registerUserNotificationCategoriesForApplication:(UIApplication *)application
@@ -79,6 +86,31 @@
 {
     CLLocation *location = [locations lastObject];
     // NSLog(@"%@", location);
+}
+
+- (void)displayFoodNotification:(NSNotification *)notification
+{
+    UILocalNotification *foodNotification = [[UILocalNotification alloc] init];
+    CLLocation *currentLocation = self.locationManager.location;
+//    BFFoodReport *foodReport = [notification.userInfo objectForKey:@"report"];
+//    CLLocation *foodLocation = [[CLLocation alloc] initWithLatitude:foodReport.lat.doubleValue longitude:foodReport.lng.doubleValue];
+//    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+//    [numberFormatter setLocale:[NSLocale currentLocale]];
+//    [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+//    [numberFormatter setMaximumFractionDigits:1];
+//    if ([foodReport.foodDrink isEqualToString:@"drink"]) {
+//        foodNotification.alertBody = [NSString stringWithFormat:@"%@ was reported on floor %@ of Ford, %.f meters away!", foodReport.drinkType, foodReport.floorNumber,  [numberFormatter stringFromNumber:[NSNumber numberWithDouble:[foodLocation distanceFromLocation:currentLocation]]].doubleValue];
+//    } else {
+//        foodNotification.alertBody = [NSString stringWithFormat:@"%@ was reported on floor %@ of Ford, %.f meters away!", foodReport.foodType, foodReport.floorNumber,  [numberFormatter stringFromNumber:[NSNumber numberWithDouble:[foodLocation distanceFromLocation:currentLocation]]].doubleValue];
+//    }
+    foodNotification.alertBody = [NSString stringWithFormat:@"food reported"];
+
+    [[UIApplication sharedApplication] presentLocalNotificationNow:foodNotification];
+}
+
+-(void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
+{
+    [application registerForRemoteNotifications];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

@@ -47,6 +47,7 @@
             if (self.tableIndex >= 0) {
                 [self addDetails];
             }
+            [self loadReportAnnotation];
         } else {
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
@@ -56,6 +57,11 @@
 
 -(void)addDetails
 {
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setLocale:[NSLocale currentLocale]];
+    [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    [numberFormatter setMaximumFractionDigits:2];
+    
     PFObject *report = [foodReports objectAtIndex:self.tableIndex];
     NSLog(@"%@", foodReports);
     NSLog(@"%ld", (long)self.tableIndex);
@@ -75,8 +81,13 @@
         self.foodTypeLabel.text = [NSString stringWithFormat:@"%@ and %@", foodType, drinkType];
     }
     
+    [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *currentgeoPoint, NSError *error) {
+        self.distanceLabel.text = [NSString stringWithFormat:@"%@ miles away", [numberFormatter stringFromNumber:[NSNumber numberWithDouble:[currentgeoPoint distanceInMilesTo:geoPoint]]]];
+    }];
+    
     CLLocation *reportLocation = [[CLLocation alloc] initWithLatitude:geoPoint.latitude longitude:geoPoint.longitude];
-    self.distanceLabel.text = [NSString stringWithFormat:@"%f meters away from you", [reportLocation distanceFromLocation:((AppDelegate*)[UIApplication sharedApplication].delegate).locationManager.location]];
+    //self.distanceLabel.text = [NSString stringWithFormat:@"%f meters away from you", [reportLocation distanceFromLocation:((AppDelegate*)[UIApplication sharedApplication].delegate).locationManager.location]];
+    
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"HH:mm"];
     self.reportTimeLabel.text = [NSString stringWithFormat:@"reported at %@", [formatter stringFromDate:report.updatedAt]];
@@ -86,6 +97,21 @@
     //if ([report.freeForAnyone isEqualToString:@"yes"]) {
     self.notFreeForAllLabel.hidden = YES;
     //}
+}
+
+- (void)loadReportAnnotation {
+    PFObject *report = [foodReports objectAtIndex:self.tableIndex];
+    PFGeoPoint *geoPoint = [report objectForKey:@"FoodGeopoint"];
+    CLLocationCoordinate2D reportLocation = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
+//    CLLocation *reportLocation = [[CLLocation alloc] initWithLatitude:geoPoint.latitude longitude:geoPoint.longitude];
+//    CLLocationCoordinate2D reportLoc = CLLocationCoordinate2DMake(report, report.lng.doubleValue);
+    [self.reportMapView setCenterCoordinate:reportLocation animated:YES];
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(reportLocation, 800, 800);
+    [self.reportMapView setRegion:region];
+    MKPointAnnotation *reportAnnotation = [[MKPointAnnotation alloc] init];
+    reportAnnotation.coordinate = reportLocation;
+    reportAnnotation.title = @"Free food!";
+    [self.reportMapView addAnnotation:reportAnnotation];
 }
 
 - (void)didReceiveMemoryWarning {

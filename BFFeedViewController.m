@@ -24,8 +24,13 @@
     [self initUI];
 }
 
+-(void) updateTableView {
+    [self.feedTableView reloadData];
+}
+
 - (void) initUI {
     // table view
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTableView) name:@"reportUpdate" object:nil];
     self.feedTableView.delegate = self;
     self.feedTableView.dataSource = self;
     PFQuery *query = [PFQuery queryWithClassName:@"Report"];
@@ -86,7 +91,7 @@
             NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
             [numberFormatter setLocale:[NSLocale currentLocale]];
             [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
-            [numberFormatter setMaximumFractionDigits:1];
+            [numberFormatter setMaximumFractionDigits:2];
             
             if (![foodType isEqualToString:@"None"] && [drinkType isEqualToString:@"None"]) {
                 // only food reported
