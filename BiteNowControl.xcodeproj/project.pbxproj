@@ -7,17 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DCEA13DB1AE317B7009E8EEF /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCEA13DA1AE317B7009E8EEF /* Parse.framework */; };
+		DCEA13DC1AE317B7009E8EEF /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCEA13DA1AE317B7009E8EEF /* Parse.framework */; };
+		DCEA13DE1AE31824009E8EEF /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCEA13DD1AE31824009E8EEF /* Bolts.framework */; };
+		DCEA13DF1AE31824009E8EEF /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCEA13DD1AE31824009E8EEF /* Bolts.framework */; };
+		DCEA13E21AE33AED009E8EEF /* PFObject+EqualityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA13E11AE33AED009E8EEF /* PFObject+EqualityTests.m */; };
+		DCEA13E31AE33AED009E8EEF /* PFObject+EqualityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA13E11AE33AED009E8EEF /* PFObject+EqualityTests.m */; };
+		DCEA13E51AE33C95009E8EEF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA13E41AE33C95009E8EEF /* AppDelegate.m */; };
+		DCEA13E61AE33C95009E8EEF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA13E41AE33C95009E8EEF /* AppDelegate.m */; };
 		E57759261AE0A7A000C81DDA /* ReportDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E57759251AE0A7A000C81DDA /* ReportDetailViewController.m */; };
 		E58168C11AE1A2D6005C72B0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E58168C01AE1A2D5005C72B0 /* MapKit.framework */; };
 		E5BD1A591ADF3C67004CAFDE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BD1A581ADF3C67004CAFDE /* main.m */; };
-		E5BD1A5C1ADF3C67004CAFDE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BD1A5B1ADF3C67004CAFDE /* AppDelegate.m */; };
 		E5BD1A5F1ADF3C67004CAFDE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BD1A5E1ADF3C67004CAFDE /* ViewController.m */; };
 		E5BD1A621ADF3C67004CAFDE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5BD1A601ADF3C67004CAFDE /* Main.storyboard */; };
 		E5BD1A641ADF3C67004CAFDE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5BD1A631ADF3C67004CAFDE /* Images.xcassets */; };
 		E5BD1A671ADF3C67004CAFDE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5BD1A651ADF3C67004CAFDE /* LaunchScreen.xib */; };
 		E5BD1A731ADF3C67004CAFDE /* BiteNowControlTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BD1A721ADF3C67004CAFDE /* BiteNowControlTests.m */; };
-		E5BD1A7E1ADF48E9004CAFDE /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5BD1A7C1ADF48E9004CAFDE /* Bolts.framework */; };
-		E5BD1A7F1ADF48E9004CAFDE /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5BD1A7D1ADF48E9004CAFDE /* Parse.framework */; };
 		E5BD1A811ADF4911004CAFDE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5BD1A801ADF4911004CAFDE /* AudioToolbox.framework */; };
 		E5BD1A831ADF491A004CAFDE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5BD1A821ADF491A004CAFDE /* CFNetwork.framework */; };
 		E5BD1A851ADF4921004CAFDE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5BD1A841ADF4921004CAFDE /* CoreGraphics.framework */; };
@@ -44,6 +49,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DCEA13DA1AE317B7009E8EEF /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		DCEA13DD1AE31824009E8EEF /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		DCEA13E01AE33AED009E8EEF /* PFObject+EqualityTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFObject+EqualityTests.h"; sourceTree = "<group>"; };
+		DCEA13E11AE33AED009E8EEF /* PFObject+EqualityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFObject+EqualityTests.m"; sourceTree = "<group>"; };
+		DCEA13E41AE33C95009E8EEF /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E57759241AE0A7A000C81DDA /* ReportDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportDetailViewController.h; sourceTree = "<group>"; };
 		E57759251AE0A7A000C81DDA /* ReportDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportDetailViewController.m; sourceTree = "<group>"; };
 		E58168C01AE1A2D5005C72B0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -51,7 +61,6 @@
 		E5BD1A571ADF3C67004CAFDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5BD1A581ADF3C67004CAFDE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E5BD1A5A1ADF3C67004CAFDE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		E5BD1A5B1ADF3C67004CAFDE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E5BD1A5D1ADF3C67004CAFDE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		E5BD1A5E1ADF3C67004CAFDE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		E5BD1A611ADF3C67004CAFDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -60,8 +69,6 @@
 		E5BD1A6C1ADF3C67004CAFDE /* BiteNowControlTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BiteNowControlTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5BD1A711ADF3C67004CAFDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5BD1A721ADF3C67004CAFDE /* BiteNowControlTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BiteNowControlTests.m; sourceTree = "<group>"; };
-		E5BD1A7C1ADF48E9004CAFDE /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../Downloads/parse-library-1.7.1/Bolts.framework"; sourceTree = "<group>"; };
-		E5BD1A7D1ADF48E9004CAFDE /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../Downloads/parse-library-1.7.1/Parse.framework"; sourceTree = "<group>"; };
 		E5BD1A801ADF4911004CAFDE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		E5BD1A821ADF491A004CAFDE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		E5BD1A841ADF4921004CAFDE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -94,10 +101,10 @@
 				E5BD1A891ADF492D004CAFDE /* MobileCoreServices.framework in Frameworks */,
 				E5BD1A871ADF4926004CAFDE /* CoreLocation.framework in Frameworks */,
 				E5BD1A851ADF4921004CAFDE /* CoreGraphics.framework in Frameworks */,
+				DCEA13DB1AE317B7009E8EEF /* Parse.framework in Frameworks */,
 				E5BD1A831ADF491A004CAFDE /* CFNetwork.framework in Frameworks */,
 				E5BD1A811ADF4911004CAFDE /* AudioToolbox.framework in Frameworks */,
-				E5BD1A7F1ADF48E9004CAFDE /* Parse.framework in Frameworks */,
-				E5BD1A7E1ADF48E9004CAFDE /* Bolts.framework in Frameworks */,
+				DCEA13DE1AE31824009E8EEF /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +112,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCEA13DC1AE317B7009E8EEF /* Parse.framework in Frameworks */,
+				DCEA13DF1AE31824009E8EEF /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,6 +123,8 @@
 		E5BD1A4A1ADF3C67004CAFDE = {
 			isa = PBXGroup;
 			children = (
+				DCEA13DD1AE31824009E8EEF /* Bolts.framework */,
+				DCEA13DA1AE317B7009E8EEF /* Parse.framework */,
 				E58168C01AE1A2D5005C72B0 /* MapKit.framework */,
 				E5BD1A551ADF3C67004CAFDE /* BiteNowControl */,
 				E5BD1A6F1ADF3C67004CAFDE /* BiteNowControlTests */,
@@ -129,8 +140,6 @@
 				E5BD1A841ADF4921004CAFDE /* CoreGraphics.framework */,
 				E5BD1A821ADF491A004CAFDE /* CFNetwork.framework */,
 				E5BD1A801ADF4911004CAFDE /* AudioToolbox.framework */,
-				E5BD1A7C1ADF48E9004CAFDE /* Bolts.framework */,
-				E5BD1A7D1ADF48E9004CAFDE /* Parse.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -147,7 +156,9 @@
 			isa = PBXGroup;
 			children = (
 				E5BD1A5A1ADF3C67004CAFDE /* AppDelegate.h */,
-				E5BD1A5B1ADF3C67004CAFDE /* AppDelegate.m */,
+				DCEA13E41AE33C95009E8EEF /* AppDelegate.m */,
+				DCEA13E01AE33AED009E8EEF /* PFObject+EqualityTests.h */,
+				DCEA13E11AE33AED009E8EEF /* PFObject+EqualityTests.m */,
 				E5BD1A5D1ADF3C67004CAFDE /* ViewController.h */,
 				E5BD1A5E1ADF3C67004CAFDE /* ViewController.m */,
 				E5BD1A991ADF5678004CAFDE /* BFFeedViewController.h */,
@@ -293,9 +304,10 @@
 				E5BD1A9E1ADF5A49004CAFDE /* BFContributeViewController.m in Sources */,
 				E5BD1A9B1ADF5678004CAFDE /* BFFeedViewController.m in Sources */,
 				E5BD1A5F1ADF3C67004CAFDE /* ViewController.m in Sources */,
-				E5BD1A5C1ADF3C67004CAFDE /* AppDelegate.m in Sources */,
+				DCEA13E21AE33AED009E8EEF /* PFObject+EqualityTests.m in Sources */,
 				E5BD1A591ADF3C67004CAFDE /* main.m in Sources */,
 				E57759261AE0A7A000C81DDA /* ReportDetailViewController.m in Sources */,
+				DCEA13E51AE33C95009E8EEF /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,7 +315,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCEA13E31AE33AED009E8EEF /* PFObject+EqualityTests.m in Sources */,
 				E5BD1A731ADF3C67004CAFDE /* BiteNowControlTests.m in Sources */,
+				DCEA13E61AE33C95009E8EEF /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,7 +368,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Northwestern University";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -374,6 +388,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "BB876719-D88E-4350-8B56-5FE61CE257B2";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -395,7 +410,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Northwestern University";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Northwestern University";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -408,6 +424,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "BB876719-D88E-4350-8B56-5FE61CE257B2";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -417,10 +434,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/nzhu94/Downloads/parse-library-1.7.1",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				INFOPLIST_FILE = BiteNowControl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -431,10 +445,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/nzhu94/Downloads/parse-library-1.7.1",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				INFOPLIST_FILE = BiteNowControl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -448,6 +459,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -467,6 +479,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = BiteNowControlTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
