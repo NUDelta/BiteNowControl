@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -154,20 +154,14 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Contribute a food report" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOs-NJ-7ub">
-                                <rect key="frame" x="48" y="94" width="525" height="43"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Which building is it in?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rT2-LJ-4T3">
-                                <rect key="frame" x="48" y="151" width="173" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="48" y="101" width="173" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QcQ-yE-KsN">
-                                <rect key="frame" x="48" y="174" width="273" height="29"/>
+                                <rect key="frame" x="48" y="124" width="273" height="29"/>
                                 <segments>
                                     <segment title="Ford"/>
                                     <segment title="Tech"/>
@@ -177,13 +171,13 @@
                                 <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Which floor?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hkv-ue-iWS">
-                                <rect key="frame" x="48" y="210" width="97" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="48" y="160" width="97" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="k97-sQ-F5f">
-                                <rect key="frame" x="48" y="231" width="203" height="29"/>
+                                <rect key="frame" x="48" y="181" width="203" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="k97-sQ-F5f" secondAttribute="height" multiplier="29:4" id="8ip-oq-308"/>
                                 </constraints>
@@ -195,13 +189,13 @@
                                 <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="What kind of food?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y5F-9x-Slz">
-                                <rect key="frame" x="48" y="266" width="147" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="48" y="216" width="147" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Aey-y7-bGv">
-                                <rect key="frame" x="48" y="290" width="203" height="29"/>
+                                <rect key="frame" x="48" y="240" width="203" height="29"/>
                                 <segments>
                                     <segment title="Candy"/>
                                     <segment title="Cookies"/>
@@ -209,31 +203,20 @@
                                 </segments>
                                 <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="What kind of drink?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rA7-2p-xp2">
-                                <rect key="frame" x="48" y="326" width="150" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="What kind of drink?" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rA7-2p-xp2">
+                                <rect key="frame" x="48" y="276" width="150" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Free for anyone?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfW-5B-wQZ">
-                                <rect key="frame" x="48" y="385" width="130" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="48" y="335" width="130" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V2d-h3-NId">
-                                <rect key="frame" x="48" y="458" width="109" height="32"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <state key="normal" title="SUBMIT">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="saveReport:" destination="5rT-vR-fhG" eventType="touchUpInside" id="8vH-eP-nVJ"/>
-                                </connections>
-                            </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Jjv-xL-YAY">
-                                <rect key="frame" x="48" y="349" width="203" height="29"/>
+                                <rect key="frame" x="48" y="299" width="203" height="29"/>
                                 <segments>
                                     <segment title="Soda"/>
                                     <segment title="Coffee"/>
@@ -242,7 +225,7 @@
                                 <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bul-7e-Mr5">
-                                <rect key="frame" x="48" y="407" width="130" height="29"/>
+                                <rect key="frame" x="48" y="357" width="130" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="bul-7e-Mr5" secondAttribute="height" multiplier="65:14" id="Cje-DT-jOz"/>
                                 </constraints>
@@ -252,10 +235,29 @@
                                 </segments>
                                 <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V2d-h3-NId">
+                                <rect key="frame" x="48" y="406" width="109" height="32"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <state key="normal" title="SUBMIT">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveReport:" destination="5rT-vR-fhG" eventType="touchUpInside" id="8vH-eP-nVJ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Contribute a food report" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSH-Op-oJF">
+                                <rect key="frame" x="48" y="72" width="186" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="QcQ-yE-KsN" firstAttribute="leading" secondItem="uiF-Km-Ldr" secondAttribute="leadingMargin" constant="32" id="0ad-sg-6Xu"/>
+                            <constraint firstItem="rT2-LJ-4T3" firstAttribute="top" secondItem="rSH-Op-oJF" secondAttribute="bottom" constant="8" id="0g1-XH-Mcu"/>
+                            <constraint firstItem="rSH-Op-oJF" firstAttribute="leading" secondItem="uiF-Km-Ldr" secondAttribute="leadingMargin" constant="32" id="2NK-YM-iZH"/>
                             <constraint firstItem="rA7-2p-xp2" firstAttribute="leading" secondItem="uiF-Km-Ldr" secondAttribute="leadingMargin" constant="32" id="6mw-CY-ECk"/>
                             <constraint firstItem="bfW-5B-wQZ" firstAttribute="leading" secondItem="uiF-Km-Ldr" secondAttribute="leadingMargin" constant="32" id="Bpo-Hk-FFl"/>
                             <constraint firstItem="bul-7e-Mr5" firstAttribute="top" secondItem="bfW-5B-wQZ" secondAttribute="bottom" constant="1" id="Fk1-be-lcH"/>
@@ -266,19 +268,17 @@
                             <constraint firstItem="Jjv-xL-YAY" firstAttribute="top" secondItem="rA7-2p-xp2" secondAttribute="bottom" constant="2" id="RBj-34-rDW"/>
                             <constraint firstItem="k97-sQ-F5f" firstAttribute="top" secondItem="Hkv-ue-iWS" secondAttribute="bottom" id="Trh-YM-4kV"/>
                             <constraint firstItem="k97-sQ-F5f" firstAttribute="leading" secondItem="uiF-Km-Ldr" secondAttribute="leadingMargin" constant="32" id="Tyj-RQ-Wbp"/>
+                            <constraint firstItem="rSH-Op-oJF" firstAttribute="top" secondItem="fXR-tx-WaO" secondAttribute="bottom" constant="8" id="ZV4-ls-W4U"/>
                             <constraint firstItem="Hkv-ue-iWS" firstAttribute="top" secondItem="QcQ-yE-KsN" secondAttribute="bottom" constant="8" id="Zgi-0p-faf"/>
                             <constraint firstAttribute="centerX" secondItem="fXR-tx-WaO" secondAttribute="centerX" id="bmN-26-hEu"/>
-                            <constraint firstItem="rT2-LJ-4T3" firstAttribute="top" secondItem="JOs-NJ-7ub" secondAttribute="bottom" constant="16" id="cCN-Uw-vyX"/>
                             <constraint firstItem="Hkv-ue-iWS" firstAttribute="leading" secondItem="uiF-Km-Ldr" secondAttribute="leadingMargin" constant="32" id="czD-3a-0S0"/>
                             <constraint firstItem="V2d-h3-NId" firstAttribute="top" secondItem="bul-7e-Mr5" secondAttribute="bottom" constant="23" id="dn0-RU-zie"/>
                             <constraint firstItem="Y5F-9x-Slz" firstAttribute="leading" secondItem="uiF-Km-Ldr" secondAttribute="leadingMargin" constant="32" id="eiv-ar-Yjb"/>
                             <constraint firstItem="QcQ-yE-KsN" firstAttribute="top" secondItem="rT2-LJ-4T3" secondAttribute="bottom" constant="2" id="fe5-yG-FNB"/>
                             <constraint firstItem="Aey-y7-bGv" firstAttribute="leading" secondItem="uiF-Km-Ldr" secondAttribute="leadingMargin" constant="32" id="l4b-dS-1xk"/>
                             <constraint firstItem="V2d-h3-NId" firstAttribute="width" secondItem="uiF-Km-Ldr" secondAttribute="height" multiplier="109:600" id="loz-yE-YRg"/>
-                            <constraint firstItem="JOs-NJ-7ub" firstAttribute="leading" secondItem="uiF-Km-Ldr" secondAttribute="leadingMargin" constant="32" id="mD6-ef-9bW"/>
                             <constraint firstItem="Aey-y7-bGv" firstAttribute="top" secondItem="Y5F-9x-Slz" secondAttribute="bottom" constant="3" id="qaY-pH-K7h"/>
                             <constraint firstItem="rT2-LJ-4T3" firstAttribute="leading" secondItem="uiF-Km-Ldr" secondAttribute="leadingMargin" constant="32" id="tAH-3e-df9"/>
-                            <constraint firstItem="JOs-NJ-7ub" firstAttribute="top" secondItem="fXR-tx-WaO" secondAttribute="bottom" constant="30" id="tBh-iP-CnD"/>
                             <constraint firstItem="fXR-tx-WaO" firstAttribute="top" secondItem="uiF-Km-Ldr" secondAttribute="top" id="tFZ-WE-Idu"/>
                             <constraint firstItem="Jjv-xL-YAY" firstAttribute="leading" secondItem="uiF-Km-Ldr" secondAttribute="leadingMargin" constant="32" id="v1y-wR-RSS"/>
                             <constraint firstItem="bul-7e-Mr5" firstAttribute="leading" secondItem="uiF-Km-Ldr" secondAttribute="leadingMargin" constant="32" id="xez-83-P8z"/>
