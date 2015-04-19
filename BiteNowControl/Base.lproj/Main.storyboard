@@ -83,7 +83,7 @@
         <!--Settings-->
         <scene sceneID="Vvn-sq-OOL">
             <objects>
-                <viewController id="Ury-Sc-wOE" sceneMemberID="viewController">
+                <viewController id="Ury-Sc-wOE" customClass="BFSettingsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="v4i-gv-ccg"/>
                         <viewControllerLayoutGuide type="bottom" id="g9m-5U-P0E"/>
@@ -103,15 +103,22 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Watch our tutorial:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6wF-Ix-HQj">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6wF-Ix-HQj">
                                 <rect key="frame" x="94" y="109" width="412" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="UJL-Lk-DEW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" editable="NO" text="https://youtu.be/auEofvWp6ic" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="IWU-Sx-Pno">
-                                <rect key="frame" x="180" y="164" width="240" height="33"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Reread about our app/study or ask for help at http://bit.ly/1EZf5aM" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="IWU-Sx-Pno">
+                                <rect key="frame" x="180" y="164" width="240" height="96"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="9Zr-Hf-jqL"/>
+                                    <constraint firstAttribute="height" constant="96" id="gY4-zf-Zgp"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
@@ -119,13 +126,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="IWU-Sx-Pno" firstAttribute="top" secondItem="6wF-Ix-HQj" secondAttribute="bottom" constant="34" id="1ja-ac-YCI"/>
+                            <constraint firstItem="6wF-Ix-HQj" firstAttribute="top" secondItem="Eq8-DR-iRP" secondAttribute="bottom" constant="45" id="7Tp-gW-rre"/>
+                            <constraint firstItem="6wF-Ix-HQj" firstAttribute="centerX" secondItem="IWU-Sx-Pno" secondAttribute="centerX" id="EHh-r0-I3h"/>
                             <constraint firstAttribute="centerX" secondItem="Eq8-DR-iRP" secondAttribute="centerX" id="Mxp-13-8F9"/>
                             <constraint firstItem="Eq8-DR-iRP" firstAttribute="top" secondItem="7Fd-yw-xB9" secondAttribute="top" id="TcK-vr-vQs"/>
                             <constraint firstAttribute="centerX" secondItem="6wF-Ix-HQj" secondAttribute="centerX" id="j0r-WA-Gyb"/>
                             <constraint firstAttribute="centerX" secondItem="IWU-Sx-Pno" secondAttribute="centerX" id="m8l-Bc-oep"/>
+                            <constraint firstItem="6wF-Ix-HQj" firstAttribute="leading" secondItem="7Fd-yw-xB9" secondAttribute="leadingMargin" constant="78" id="qAv-0k-BfB"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="id1" id="VGj-j4-Alm"/>
+                    <connections>
+                        <outlet property="userLabel" destination="6wF-Ix-HQj" id="l2C-IN-tFA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C8g-BZ-GPR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

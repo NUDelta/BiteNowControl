@@ -15,6 +15,7 @@
 		DCEA13E31AE33AED009E8EEF /* PFObject+EqualityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA13E11AE33AED009E8EEF /* PFObject+EqualityTests.m */; };
 		DCEA13E51AE33C95009E8EEF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA13E41AE33C95009E8EEF /* AppDelegate.m */; };
 		DCEA13E61AE33C95009E8EEF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA13E41AE33C95009E8EEF /* AppDelegate.m */; };
+		E5732A921AE3579A00FA92AA /* BFSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5732A911AE3579A00FA92AA /* BFSettingsViewController.m */; };
 		E57759261AE0A7A000C81DDA /* ReportDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E57759251AE0A7A000C81DDA /* ReportDetailViewController.m */; };
 		E58168C11AE1A2D6005C72B0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E58168C01AE1A2D5005C72B0 /* MapKit.framework */; };
 		E5BD1A591ADF3C67004CAFDE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BD1A581ADF3C67004CAFDE /* main.m */; };
@@ -54,6 +55,8 @@
 		DCEA13E01AE33AED009E8EEF /* PFObject+EqualityTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFObject+EqualityTests.h"; sourceTree = "<group>"; };
 		DCEA13E11AE33AED009E8EEF /* PFObject+EqualityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFObject+EqualityTests.m"; sourceTree = "<group>"; };
 		DCEA13E41AE33C95009E8EEF /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E5732A901AE3579A00FA92AA /* BFSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFSettingsViewController.h; sourceTree = "<group>"; };
+		E5732A911AE3579A00FA92AA /* BFSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFSettingsViewController.m; sourceTree = "<group>"; };
 		E57759241AE0A7A000C81DDA /* ReportDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportDetailViewController.h; sourceTree = "<group>"; };
 		E57759251AE0A7A000C81DDA /* ReportDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportDetailViewController.m; sourceTree = "<group>"; };
 		E58168C01AE1A2D5005C72B0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -166,6 +169,8 @@
 				E5BD1A9C1ADF5A49004CAFDE /* BFContributeViewController.h */,
 				E5BD1A9D1ADF5A49004CAFDE /* BFContributeViewController.m */,
 				E5BD1A601ADF3C67004CAFDE /* Main.storyboard */,
+				E5732A901AE3579A00FA92AA /* BFSettingsViewController.h */,
+				E5732A911AE3579A00FA92AA /* BFSettingsViewController.m */,
 				E57759241AE0A7A000C81DDA /* ReportDetailViewController.h */,
 				E57759251AE0A7A000C81DDA /* ReportDetailViewController.m */,
 				E5BD1A631ADF3C67004CAFDE /* Images.xcassets */,
@@ -306,6 +311,7 @@
 				E5BD1A5F1ADF3C67004CAFDE /* ViewController.m in Sources */,
 				DCEA13E21AE33AED009E8EEF /* PFObject+EqualityTests.m in Sources */,
 				E5BD1A591ADF3C67004CAFDE /* main.m in Sources */,
+				E5732A921AE3579A00FA92AA /* BFSettingsViewController.m in Sources */,
 				E57759261AE0A7A000C81DDA /* ReportDetailViewController.m in Sources */,
 				DCEA13E51AE33C95009E8EEF /* AppDelegate.m in Sources */,
 			);
