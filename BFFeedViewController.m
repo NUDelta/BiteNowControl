@@ -13,6 +13,10 @@
 @interface BFFeedViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *feedTableView;
 @property (strong, nonatomic) NSArray *reportArray;
+
+// see (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+// for more explanation on this property
+@property (strong, nonatomic) NSMutableArray *locationUpdateDates;
 @end
 
 @implementation BFFeedViewController {
@@ -22,10 +26,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initUI];
-}
-
--(void) updateTableView {
-    [self.feedTableView reloadData];
 }
 
 - (void) initUI {
@@ -46,6 +46,10 @@
             NSLog(@"Success %lu", (unsigned long)foodReports.count);
         } else {
             NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+        self.locationUpdateDates = [[NSMutableArray alloc] init];
+        for (NSUInteger i = 0; i < foodReports.count; i++) {
+            [self.locationUpdateDates setObject:[NSDate dateWithTimeIntervalSince1970:0] atIndexedSubscript:i];
         }
         [self.feedTableView reloadData];
     }];
@@ -86,6 +90,10 @@
     CLLocation *reportLocation = [[CLLocation alloc] initWithLatitude:geoPoint.latitude longitude:geoPoint.longitude];
     double objectLat = geoPoint.latitude;
     
+    // this is an asynch operation, so by the time the block executes the cell has been returned,
+    // meaning the cell's title doesn't change from its default. I added a refresh of the
+    // table row at this given index at the end of the block. Keep this operation from constantly running
+    // by only calling it if the current time is > 3 seconds than the last location update date.
     [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *currentgeoPoint, NSError *error) {
         if (!error){
             NSLog(@"distance %f", [currentgeoPoint distanceInMilesTo:geoPoint]);
@@ -104,12 +112,12 @@
                 // both food and drink reported
                 cell.textLabel.text = [NSString stringWithFormat:@"%@ and %@ on floor %@ of %@", foodType, drinkType, floor, building];
             }
-//            cell.detailTextLabel.text = [NSString stringWithFormat:@"%.f meters away", [reportLocation distanceFromLocation:((AppDelegate *)[UIApplication sharedApplication].delegate).locationManager.location]];
+            //            cell.detailTextLabel.text = [NSString stringWithFormat:@"%.f meters away", [reportLocation distanceFromLocation:((AppDelegate *)[UIApplication sharedApplication].delegate).locationManager.location]];
             cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ miles away", [numberFormatter stringFromNumber:[NSNumber numberWithDouble:[currentgeoPoint distanceInMilesTo:geoPoint]]]];
-        }
-        else {
-            UIAlertView *errorAlert = [[UIAlertView alloc]initWithTitle:@"Oops!" message:[error description] delegate:self cancelButtonTitle:nil otherButtonTitles:@"Okay", nil];
-            [errorAlert show];
+            if ([[NSDate dateWithTimeInterval:1 sinceDate:[self.locationUpdateDates objectAtIndex:indexPath.row]] compare:[NSDate date]] == NSOrderedAscending) {
+                [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+                [self.locationUpdateDates setObject:[NSDate date] atIndexedSubscript:indexPath.row];
+            }
         }
     }];
     return cell;

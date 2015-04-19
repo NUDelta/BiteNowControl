@@ -47,6 +47,7 @@
             NSLog(@"saved");
             UIAlertView *confirmation = [[UIAlertView alloc] initWithTitle:@"Saved food report" message:@"Thanks for submitting a report!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [confirmation show];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"reportUpdate" object:nil];
         } else {
             // There was a problem, check error.description
             NSLog(@"error");

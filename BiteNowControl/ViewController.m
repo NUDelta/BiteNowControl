@@ -24,6 +24,8 @@
     
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    self.nameField.delegate = self;
+    self.emailField.delegate = self;
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -48,6 +50,7 @@
 //    }
     [self.emailField resignFirstResponder];
     [self.nameField resignFirstResponder];
+    [PFUser enableAutomaticUser];
     if ([segue.identifier isEqualToString:@"login"]) {
         PFQuery *userQuery = [PFUser query];
         [userQuery whereKey:@"username" equalTo:self.emailField.text];
@@ -58,9 +61,11 @@
                     user.username = self.emailField.text;
                     user.password = @"password";
                     user[@"name"] = self.nameField.text;
-                    [user signUpInBackground];
-                    [[PFUser currentUser] fetch];
-                    NSLog(@"%@", [PFUser currentUser]);
+                    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                        [PFUser logInWithUsername:user.username password:user.password];
+                        [[PFUser currentUser] fetch];
+                        NSLog(@"%@", [PFUser currentUser]);
+                    }];
 //                    [PFUser becomeInBackground:@"session-token-here" block:^(PFUser *user, NSError *error) {
 //                        if (error) {
 //                            // The token could not be validated.
@@ -77,6 +82,12 @@
             }
         }];
     }
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self performSegueWithIdentifier:@"login" sender:self];
+    return YES;
 }
 
 - (IBAction)logInButton:(UIButton *)sender

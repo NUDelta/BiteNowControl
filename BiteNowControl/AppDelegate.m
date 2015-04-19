@@ -13,6 +13,8 @@
 
 @interface AppDelegate ()
 
+@property (strong, nonatomic) NSArray *reportArray;
+
 @end
 
 @implementation AppDelegate
@@ -28,31 +30,53 @@
         [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
     }
     [Parse enableLocalDatastore];
-    [PFUser enableRevocableSessionInBackground];
     [Parse setApplicationId:@"YLdVnEbVE2KUq5AeLJnI1U9pDSaihGMyhn7rZNPG"
                   clientKey:@"KTimbSuvZuHwCq3XXelLocnnlE4YXz9KRGz79FoZ"];
-//    [PFUser enableAutomaticUser];
-    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-//    if([PFUser currentUser]) {
-//        self.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
-//    } else {
-//        UIViewController* rootController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"SignInViewController"];
-//        UINavigationController* navigation = [[UINavigationController alloc] initWithRootViewController:rootController];
-//        self.window.rootViewController = navigation;
-//    }
-    
-//    NSTimer* timer = [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(refreshTable) userInfo:nil repeats:YES];
-    
+    [self fetchReports];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fetchReports) name:@"reportUpdate" object:nil];
+    [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(checkReports) userInfo:nil repeats:YES];
     NSLog(@"%@", [PFUser currentUser]);
-    if ([PFUser currentUser]) {
+    if ([PFUser currentUser] && [[PFUser currentUser] isAuthenticated]) {
         NSLog(@"%@", [PFUser currentUser]);
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        BFFeedViewController *ivc = [storyboard instantiateViewControllerWithIdentifier:@"feedView"];
+        BFFeedViewController *ivc = [storyboard instantiateViewControllerWithIdentifier:@"homeView"];
         self.window.rootViewController = ivc;
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayFoodNotification:) name:@"reportUpdate" object:nil];
     return YES;
+}
+
+-(void)checkReports {
+    PFQuery *query = [PFQuery queryWithClassName:@"Report"];
+    [query setLimit:1000];
+    [query orderByDescending:@"createdAt"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            if (objects.count > self.reportArray.count) {
+                PFObject *report = [objects lastObject];
+                if ([[report objectForKey:@"FoodGeopoint"] distanceInMilesTo:[PFGeoPoint geoPointWithLocation:self.locationManager.location]] < 1) {
+                    [self displayFoodNotification:[objects lastObject]];
+                }
+                self.reportArray = objects;
+            }
+        } else {
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+}
+
+-(void)fetchReports {
+     PFQuery *query = [PFQuery queryWithClassName:@"Report"];
+    [query setLimit:1000];
+    [query orderByDescending:@"createdAt"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            self.reportArray = objects;
+        } else {
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
 }
 
 -(void)registerUserNotificationCategoriesForApplication:(UIApplication *)application
@@ -86,23 +110,19 @@
     // NSLog(@"%@", location);
 }
 
-- (void)displayFoodNotification:(NSNotification *)notification
+- (void)displayFoodNotification:(PFObject *)report
 {
     UILocalNotification *foodNotification = [[UILocalNotification alloc] init];
     CLLocation *currentLocation = self.locationManager.location;
-//    BFFoodReport *foodReport = [notification.userInfo objectForKey:@"report"];
-//    CLLocation *foodLocation = [[CLLocation alloc] initWithLatitude:foodReport.lat.doubleValue longitude:foodReport.lng.doubleValue];
-//    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-//    [numberFormatter setLocale:[NSLocale currentLocale]];
-//    [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
-//    [numberFormatter setMaximumFractionDigits:1];
-//    if ([foodReport.foodDrink isEqualToString:@"drink"]) {
-//        foodNotification.alertBody = [NSString stringWithFormat:@"%@ was reported on floor %@ of Ford, %.f meters away!", foodReport.drinkType, foodReport.floorNumber,  [numberFormatter stringFromNumber:[NSNumber numberWithDouble:[foodLocation distanceFromLocation:currentLocation]]].doubleValue];
-//    } else {
-//        foodNotification.alertBody = [NSString stringWithFormat:@"%@ was reported on floor %@ of Ford, %.f meters away!", foodReport.foodType, foodReport.floorNumber,  [numberFormatter stringFromNumber:[NSNumber numberWithDouble:[foodLocation distanceFromLocation:currentLocation]]].doubleValue];
-//    }
-    foodNotification.alertBody = [NSString stringWithFormat:@"food reported"];
-
+    NSString *foodType = @"";
+    NSString *drinkType = @"";
+    if (![[report objectForKey:@"FoodType"] isEqualToString:@"None"]) {
+        foodType = [report objectForKey:@"FoodType"];
+    }
+    if (![[report objectForKey:@"DrinkType"] isEqualToString:@"None"]) {
+        drinkType = [@" and " stringByAppendingString:[report objectForKey:@"DrinkType"]];
+    }
+    foodNotification.alertBody = [NSString stringWithFormat:@"%@%@ was reported on floor %@ of %@, %.2f miles away!", foodType, drinkType, [report objectForKey:@"Floor"], [report objectForKey:@"Building"], [((PFGeoPoint*)[report objectForKey:@"FoodGeopoint"]) distanceInMilesTo:[PFGeoPoint geoPointWithLocation:currentLocation]]];
     [[UIApplication sharedApplication] presentLocalNotificationNow:foodNotification];
 }
 
